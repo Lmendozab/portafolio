@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae Inteligente - Luis Eladio Mendoza B.</title>
+    <style>
+        /* --- ESTILOS GENERALES Y MODERNOS --- */
+        :root {
+            --primary-color: #0b1536; /* Azul Oscuro Corporativo */
+            --secondary-color: #f8fafc; /* Gris ultra claro */
+            --accent-color: #1e3a8a; 
+            --line-color: #10b981; /* Verde esmeralda */
+            --text-dark: #1e293b;
+            --text-light: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: #64748b;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- BARRA DE HERRAMIENTAS (NO SE IMPRIME) --- */
+        .toolbar {
+            background-color: #1e293b;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            max-width: 850px;
+            width: 100%;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 1px solid #334155;
+        }
+
+        .toolbar-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #38bdf8;
+            text-align: center;
+        }
+
+        .actions-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background-color: #334155;
+            color: white;
+            border: 1px solid #475569;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn:hover {
+            background-color: #475569;
+            border-color: #64748b;
+        }
+
+        .btn-primary {
+            background-color: #0284c7;
+            border-color: #0369a1;
+        }
+
+        .btn-primary:hover {
+            background-color: #0369a1;
+        }
+
+        /* --- CONTENEDOR HOJA A4 / CARTA --- */
+        .cv-container {
+            background-color: var(--text-light);
+            width: 850px;
+            min-height: 1100px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* --- ENCABEZADO SUPERIOR ASIMÉTRICO --- */
+        .cv-header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 35px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--line-color);
+        }
+
+        .header-title h1 {
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header-title p {
+            font-size: 14px;
+            color: #93c5fd;
+            margin-top: 4px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .header-tag {
+            background-color: #1e3a8a;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+        }
+
+        /* --- ESTRUCTURA EN DOS COLUMNAS --- */
+        .cv-body {
+            display: flex;
+            flex: 1;
+        }
+
+        /* --- BARRA LATERAL (32%) --- */
+        .cv-sidebar {
+            background-color: var(--secondary-color);
+            width: 32%;
+            padding: 30px 20px;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        /* --- COLUMNA PRINCIPAL (68%) --- */
+        .cv-main {
+            width: 68%;
+            padding: 30px 35px;
+        }
+
+        /* --- SECCIONES Y TÍTULOS --- */
+        .section-title {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 6px 14px;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 20px;
+            margin-bottom: 14px;
+            letter-spacing: 1px;
+            border-radius: 2px;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .sidebar-title {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 5px 12px;
+            font-size: 12.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 22px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            border-radius: 2px;
+        }
+
+        .sidebar-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .profile-text {
+            font-size: 13px;
+            text-align: justify;
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 12.5px;
+            color: #334155;
+        }
+
+        .contact-icon {
+            background-color: var(--primary-color);
+            color: white;
+            min-width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .skills-group {
+            margin-bottom: 12px;
+        }
+
+        .skills-group strong {
+            font-size: 12.5px;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .skills-group p, .skills-group div {
+            font-size: 12px;
+            color: #475569;
+        }
+
+        .job-card {
+            margin-bottom: 18px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3px;
+        }
+
+        .job-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .job-date {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #64748b;
+            white-space: nowrap;
+            padding-left: 10px;
+        }
+
+        .job-company {
+            font-size: 12px;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .job-bullets {
+            padding-left: 16px;
+            font-size: 12.5px;
+            color: #334155;
+        }
+
+        .job-bullets li {
+            margin-bottom: 4px;
+            text-align: justify;
+        }
+
+        .edu-card {
+            margin-bottom: 12px;
+        }
+
+        .edu-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .edu-meta {
+            font-size: 12px;
+            color: #475569;
+        }
+
+        /* --- EXCLUSIÓN EN IMPRESIÓN --- */
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+                margin: 0;
+            }
+            .toolbar {
+                display: none !important;
+            }
+            .cv-container {
+                width: 100%;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE IMPRESIÓN LIMPIA -->
+    <div class="toolbar">
+        <div class="toolbar-title">SISTEMA DE PORTAFOLIO PROFESIONAL- CURRICULUM LUIS MENDOZA </div>
+        <div class="actions-container">
+            <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR DEL CV -->
+    <div class="cv-container">
+        
+        <div class="cv-header">
+            <div class="header-title">
+                <h1>Luis Eladio Mendoza B.</h1>
+                <p>T.S.U. Computación &amp; Ingeniería de Sistemas</p>
+            </div>
+            <div class="header-tag">Disponible</div>
+        </div>
+
+        <div class="cv-body">
+            
+            <!-- COLUMNA IZQUIERDA -->
+            <div class="cv-sidebar">
+                
+                <div class="sidebar-title">Contacto Directo</div>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <span class="contact-icon">ID</span>
+                        <span>V-10.161.846</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>San Cristóbal, Táchira</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <span>0414-6415585</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <span>luis.mendoza11@gmail.com</span>
+                    </li>
+                </ul>
+
+                <div class="sidebar-title">Ecosistema Técnico</div>
+                
+                <div class="skills-group">
+                    <strong>Desarrollo Frontend</strong>
+                    <p>HTML5, CSS3, JavaScript (ES6+), React, Bootstrap, AJAX, Desarrollo UI/UX.</p>
+                </div>
+
+                <div class="skills-group">
+                    <strong>Backend y Servidores</strong>
+                    <p>PHP, Node.js, Express.js, Arquitecturas RESTful, Apache, XAMPP, Windows</p>
+                </div>
+
+                <div class="skills-group">
+                    <strong>Bases de Datos y Redes</strong>
+                    <p>MySQL, SQL, MariaDb, NoSQL, Optimización de Consultas, Redes de Datos y Cableado Estructurado UTP.</p>
+                </div>
+
+                <div class="sidebar-title">Cursos Relevantes</div>
+                <div class="skills-group">
+                    <p>- Análisis de Riesgo y Seguridad<br>
+                    - Chatbots Inteligencia Artificial<br>
+                    - IA aplicada al Marketing Digital<br>
+                    - Planificación y desarrollo de cálculos y obras de construcción comunales (Ince).<br>
+                    - Excelencia personal y autoestima<br>
+                    - Calidad del servicio al Cliente</p>
+                </div>
+
+                <div class="sidebar-title">Habilidades Clave</div>
+                <div class="skills-group">
+                    <p>• Liderazgo y Gestión de Personal<br>
+                    • Cierre de Negocios Corporativos<br>
+                    • Gestión de Cuentas y Carteras clientes<br>
+                    • Análisis de Riesgo Informático<br>
+                    • Controles Preventivos y Correctivos IT<br>
+                    • Reportes al Jefe Inmediato</p>
+                </div>
+
+            </div>
+
+            <!-- COLUMNA PRINCIPAL (DERECHA) -->
+            <div class="cv-main">
+                
+                <div class="section-title">Trayectoria Profesional</div>
+                <p class="profile-text">
+                    Profesional Senior en Computación e Ingeniería de Sistemas y Obras Civiles, con más de 30 años de trayectoria liderando infraestructuras tecnológicas, automatización de procesos y desarrollo de sistemas de información corporativos. Perfil analítico con amplia trayectoria como Desarrollador Full-Stack combinada con la gerencia estratégica de departamentos de TI, control empresarial, y estimación técnica de costos operativos e Ingenieria y sistemas constructivos Edificacion, Urbanismo.
+                </p>
+
+                <div class="section-title">Experiencia laboral</div>
+
+                <!-- Exp 1 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">Jefe de Ventas, Negocios y Control de Sistemas</div>
+                        <div class="job-date">2013 - 2021</div>
+                    </div>
+                    <div class="job-company">CONSTRUCCIONES LUGU, Materiales y Ferretería</div>
+                    <ul class="job-bullets">
+                        <li>Diseño y control general automatizado de áreas de cómputo, inventarios y flujos de ventas empresariales.</li>
+                        <li>Desarrollo web e implementación de arquitecturas locales utilizando HTML, PHP, MySQL, JavaScript y React.</li>
+                        <li>Gestión y cierre de negociaciones con clientes corporativos de gran escala (Madeco, Albura, Corporación Venezolana de Cemento, grandes ferreterias).</li>
+                    </ul>
+                </div>
+
+                <!-- Exp 2 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">Supervisor e Inspector de Obras Civiles</div>
+                        <div class="job-date">2010 - 2012</div>
+                    </div>
+                    <div class="job-company">CONSTRUCTORA FRAMEN CA</div>
+                    <ul class="job-bullets">
+                        <li>Inspección técnica de estructuras de hormigón armado, Supervisión de trabajadores y Cálculos de nómina.</li>
+                        <li>Dirección e Inspección de Obras, supervisión y control de Trabajadores.</li>
+						<li>Compras de materiales y requerimiento en obra.</li>
+						<li>Dotacion de EPP y Seguridad Industrial</li>
+                        <li>Realización de cálculos métricos, valuaciones de obra y Análisis de Precios Unitarios (APU) soportados por software especializado.</li>
+                    </ul>
+                </div>
+
+                <!-- Exp 2.5 (Sub-contrato integrado de Trevi Cimentaciones) -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">Asistente del Gerente de Proyecto</div>
+                        <div class="job-date">2008</div>
+                    </div>
+                    <div class="job-company">TREVI CIMENTACIONES (Contratista Ferrocarril de Maracay)</div>
+                    <ul class="job-bullets">
+                        <li>Control operativo y logístico en proyectos de obras civiles de alta envergadura estructural, Pilotes y pantallas.</li>
+                        <li>Cómputos de producción semanal en obra, equipos, Mano de Obra, Control de ficha de nóminas Cómputo.</li>
+						<li>Reuniones en campamentos sobre metas y proyecciones </li>
+                    </ul>
+                </div>
+
+                <!-- Exp 3 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">Jefe de TI / Gerente de Sistemas / Analista / Programador</div>
+                        <div class="job-date">1991 - 2006</div>
+                    </div>
+                    <div class="job-company">INZUVI / IDES - Gobernación del Estado Zulia</div>
+                    <ul class="job-bullets">
+                        <li>Dirección estratégica de la infraestructura tecnológica, programación, administración de redes, Bases de datos y seguridad y controles y Sistemas de presupuesto de vivienda.</li>
+                        <li>Coordinación de soporte técnico corporativo de hardware, Software y redes para entornos de misión crítica estatal.</li>
+                        <li><b>Desarrollo y Automatización:</b> Lideré el análisis, diseño y puesta en marcha de los Sistemas de Información de Instituto Zuliano de Vivienda, automatizando las bases de datos de presupuestos de vivienda.</li>
+                    </ul>
+                </div>
+
+                <div class="section-title">Datos académicos</div>
+                
+                <div class="edu-card">
+                    <div class="edu-title">Ingeniería Informática (Hasta VIII Semestre)</div>
+                    <div class="edu-meta">Universidad Rafael Belloso Chacín (URBE), Maracaibo.</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-title">T.S.U. en Computación</div>
+                    <div class="edu-meta">Instituto Universitario de la Frontera (IUFRONT), San Cristóbal. (1992)</div>
+                </div>
+
+                <div class="section-title">Herramientas Técnicas de Construcción &amp; IA</div>
+                <div class="profile-text" style="font-size: 12.5px; padding-bottom: 10px;">
+                    Lulowin, Maprex, IP3 (Cálculo de APU y Presupuestos, Valuaciones, Aumento/disminución de Obras), AutoCAD Básico/Avanzado, Manejo IA, Ms-Office, VSCode.
+                </div>
+
+                <div class="section-title">Certificaciones Destacadas</div>
+                <div class="profile-text" style="font-size: 12.5px;">
+                    • <b>Certificación IBM ACE:</b> Desarrollador de Aplicaciones Avanzadas (FUNDACITE Zulia).<br>
+                    • <b>Certificaciones Microsoft:</b> Administrador de Redes de Windows e Instalación (FANPRO).<br>
+                    • <b>Diplomado de Software:</b> IUTTEPAL-Zulia.<br>
+                    • <b>Inspección de Obras Civiles I:</b> Convenio ULA.
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
